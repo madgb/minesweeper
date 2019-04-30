@@ -138,37 +138,14 @@ class Board extends Component {
         const { height, width } = this.props
         const stack = []
 
-        if (row > 0) {
-            stack.push(val[row - 1][col])
-        }
-
-        if (row < height - 1) {
-            stack.push(val[row + 1][col])
-        }
-
-        if (col > 0) {
-            stack.push(val[row][col - 1])
-        }
-
-        if (col < width - 1) {
-            stack.push(val[row][col + 1])
-        }
-
-        if (row > 0 && col > 0) {
-            stack.push(val[row - 1][col - 1])
-        }
-
-        if (row > 0 && col < width - 1) {
-            stack.push(val[row - 1][col + 1])
-        }
-
-        if (row < height - 1 && col < width - 1) {
-            stack.push(val[row + 1][col + 1])
-        }
-
-        if (row < height - 1 && col > 0) {
-            stack.push(val[row + 1][col - 1])
-        }
+        if (row > 0)                             stack.push(val[row - 1][col])
+        if (row < height - 1)                    stack.push(val[row + 1][col])
+        if (col > 0)                             stack.push(val[row][col - 1])
+        if (col < width - 1)                     stack.push(val[row][col + 1])
+        if (row > 0 && col > 0)                  stack.push(val[row - 1][col - 1])
+        if (row > 0 && col < width - 1)          stack.push(val[row - 1][col + 1])
+        if (row < height - 1 && col < width - 1) stack.push(val[row + 1][col + 1])
+        if (row < height - 1 && col > 0)         stack.push(val[row + 1][col - 1])
 
         return stack
     }
@@ -236,6 +213,23 @@ class Board extends Component {
         })
     }
 
+    compareArr(arr1, arr2) {
+        if(!arr1 || !arr2) return
+        let result
+        arr1.forEach(e1 => 
+            arr2.forEach(e2=>{
+                if(e1.length > 1 && e2.length){
+                    result = this.compareArr(e1,e2);
+                }else if(e1 !== e2 ){
+                    result = false
+                }else{
+                    result = true
+                }
+            })
+        )
+        return result
+    }
+
     flagAndMineCount(e, x, y) {
         e.preventDefault()
         let updatedData = this.state.boardData
@@ -254,12 +248,13 @@ class Board extends Component {
         if (mines === 0) {
             const mineArray = this.getMines(updatedData)
             const FlagArray = this.getFlags(updatedData)
-            if (JSON.stringify(mineArray) === JSON.stringify(FlagArray)) {
+            if (this.compareArr(mineArray, FlagArray)) {
                 this.setState({
                     mineCount: 0, 
                     gameStatus: "You Win"
                 })
                 this.revealBoard()
+                this.stopTimer()
             }
         }
 

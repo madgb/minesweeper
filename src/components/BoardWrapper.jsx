@@ -8,7 +8,7 @@ class BoardWrapper extends Component {
         this.state = {
             height: 8,
             width: 8,
-            mines: 10,
+            mines: 4,
             difficulty: 'easy',
             maxWidth: 'max-400'
         }
@@ -20,7 +20,7 @@ class BoardWrapper extends Component {
             this.setState({
                 height: 8,
                 width: 8,
-                mines: 10,
+                mines: 5,
                 difficulty: 'easy'
             })
         }
