@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "10.x"
+    "node": "11.7.0"
   },
   "dependencies": {
     "node-sass": "^4.12.0",
