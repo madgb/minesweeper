@@ -20,7 +20,7 @@ run localhost:3000
 
 ## Deployment
 
-Heroku
+https://minesweeper-game-react.herokuapp.com/
 
 ## Built With
 
