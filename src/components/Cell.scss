@@ -1,0 +1,16 @@
+.cell {
+    background: #eee;
+    border: 1px solid #000;
+    float: left;
+    line-height: 45px;
+    height: 45px;
+    text-align: center;
+    width: 45px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bolder;
+
+    &:focus {
+      outline: none;
+    }
+  }

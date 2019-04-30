@@ -1,0 +1,37 @@
+.board-wrapper {
+    margin: 0 auto;
+    padding: 20px;
+  
+    .game-info {
+      margin-bottom: 20px;
+      padding: 7px;
+      text-align: center;
+      min-height: 100px;
+      border: 1px solid;
+      border-radius: 7px;
+      .info {
+        display: block;
+        margin-top: 15px;
+      }
+    }
+  
+    .hidden {
+      background: #fff;
+      border: 1px solid #000;
+    }
+  
+    .is-flag,
+    .is-mine {
+      color: #fc543c;
+    }
+}
+.max-400{
+    max-width: 400px;
+}
+.max-600{
+    max-width: 600px;
+}
+.max-900{
+    max-width: 900px;
+}
+  
